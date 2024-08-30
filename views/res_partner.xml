@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    
+    <record id="res_partner_view_form_customer_book" model="ir.ui.view">
+        <field name="name">res.partner.form.customer.book</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_type']" position="before">
+                <field name="is_bookstore_customer"/>
+                <label for="is_bookstore_customer" string="Is a Bookstore Customer"/>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="customer_since"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_partner_view_tree_customer_book" model="ir.ui.view">
+        <field name="name">customer.tree</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree string="Customers">
+                <field name="name"/>
+                <field name="customer_since"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_customers" model="ir.actions.act_window">
+        <field name="name">Customers</field>
+        <field name="res_model">res.partner</field>
+        <field name="domain">[('is_bookstore_customer', '=', True)]</field>
+        <field name="view_id" ref="res_partner_view_tree_customer_book"/>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first customer</p>
+        </field>
+    </record>
+    
+</odoo>

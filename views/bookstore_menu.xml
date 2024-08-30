@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    
+    <!-- Main -->
+    <menuitem id="menu_bookstore_root" 
+        name="Bookstore" 
+        sequence="10"
+        action="action_bookstore_dashboard"/>
+
+    <!-- Books Menu -->
+    <menuitem id="menu_bookstore_books" 
+        name="Books" 
+        parent="menu_bookstore_root" 
+        sequence="10"
+        action="action_books"/>
+
+    <!-- Authors -->
+    <menuitem id="menu_bookstore_authors" 
+        name="Authors" 
+        parent="menu_bookstore_root" 
+        sequence="20"
+        action="action_authors"/>
+
+    <!-- Customers -->
+    <menuitem id="menu_bookstore_customers" 
+        name="Customers" 
+        parent="menu_bookstore_root" 
+        sequence="30"
+        action="action_customers"/>
+
+</odoo>
